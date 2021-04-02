@@ -1,15 +1,13 @@
 var net = require('net');
-var count=0;
-function checkPrime(k) {
-   for(var i=1;i<=k;i++){
-       if(k%i===0){
-            count++;
-       }
-   }
-   if(count===2){
-       return 'It is a Prime number'
-   }
-   return 'It is not a Prime number';
+
+function calSum(k) {
+    var sum=0;
+    var t= k.split("");
+    for(var i=0;i<t.length;i++){
+        sum=sum+ Number(t[i]);
+    }
+   
+   return 'Sum is '+sum;
 }
 
 var server = net.createServer(function(client) {
@@ -18,7 +16,7 @@ var server = net.createServer(function(client) {
         console.log('Client disconnected:');
     })
     client.on('data', function(data) {
-        client.write(checkPrime(data.toString()));
+        client.write(calSum(data.toString()));
     })
 });
 

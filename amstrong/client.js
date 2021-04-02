@@ -1,7 +1,7 @@
 var net = require('net');
 var client = net.connect(8000);
 console.log('Connected to Server !!!')
-client.write('20');
+client.write('407');
 client.on('data', function(data) {
     console.log(data.toString());
     client.end();
